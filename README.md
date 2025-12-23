@@ -4,59 +4,59 @@
 ![BigQuery](https://img.shields.io/badge/Google_Cloud-BigQuery-orange)
 ![License](https://img.shields.io/badge/License-MIT-grey)
 
-Ce projet porte sur l'analyse de données satellitaires océanographiques (SST et SSH) sur une période de 5 ans. L'objectif principal est de mettre en œuvre une architecture de traitement Big Data (~50 Go de données) utilisant Google Cloud Platform pour extraire des indicateurs climatiques et analyser des phénomènes météorologiques extrêmes.
+This project focuses on the analysis of global oceanographic satellite data (SST and SSH) over a 5-year period. The primary objective is to implement a Big Data processing pipeline (~50GB of data) using Google Cloud Platform to extract climate indicators and analyze extreme weather events.
 
-## Aperçu du projet
+## Project Overview
 
-Le traitement des données se fait via une approche hybride pour pallier les limitations de mémoire locale :
-1.  **Agrégation Cloud (Server-side) :** Utilisation de SQL via Google BigQuery pour effectuer les calculs statistiques lourds directement sur l'infrastructure Google.
-2.  **Analyse Locale (Client-side) :** Récupération des données agrégées via Python pour la visualisation fine et la modélisation prédictive.
+To address local memory limitations, data processing follows a hybrid approach:
+1.  **Cloud-Side Aggregation:** Leveraging Google BigQuery (SQL) to perform heavy statistical computations directly on the cloud infrastructure.
+2.  **Client-Side Analysis:** Fetching aggregated results via Python for detailed visualization and predictive modeling.
 
-### Stack Technique
-* **Langage :** Python (Pandas, NumPy, Scikit-learn)
-* **Cloud & Data :** Google BigQuery (SQL), Google Cloud Storage
-* **Visualisation :** Matplotlib, Basemap (Projections géospatiales)
+### Tech Stack
+* **Language:** Python (Pandas, NumPy, Scikit-learn)
+* **Cloud & Data:** Google BigQuery (SQL), Google Cloud Storage
+* **Visualization:** Matplotlib, Basemap (Geospatial projections)
 
-## Analyses Principales
+## Key Analyses & Case Studies
 
-Le notebook présente plusieurs études de cas ciblées sur des dynamiques océanographiques spécifiques :
+The notebook presents several targeted studies on specific oceanographic dynamics:
 
-### 1. Dynamique du Courant des Aiguilles
-Étude de la corrélation spatiale entre la température de surface (SST) et la hauteur de mer (SSH) dans la région du courant des Aiguilles (Afrique du Sud), une zone caractérisée par une forte variabilité méso-échelle.
+### 1. Agulhas Current Dynamics
+Investigation of the spatial correlation between Sea Surface Temperature (SST) and Sea Surface Height (SSH) in the Agulhas Current region (South Africa), an area characterized by intense mesoscale variability.
 
-### 2. Monitoring ENSO (El Niño / La Niña)
-Calcul de l'indice ENSO dans le Pacifique équatorial. L'analyse des anomalies de température moyenne journalière permet d'identifier les phases chaudes (El Niño) et froides (La Niña) sur la période 2011-2015.
+### 2. ENSO Monitoring (El Niño / La Niña)
+Calculation of the ENSO index in the Equatorial Pacific. Analysis of daily mean temperature anomalies allows for the identification of warm phases (El Niño) and cold phases (La Niña) over the 2011-2015 period.
 
-### 3. Impact Thermique des Typhons
-Détection des "sillages froids" (Cold Wakes) au sud du Japon. L'algorithme calcule le gradient journalier de SST pour isoler les chutes brutales de température (> 0.4°C/jour) correspondant au passage des cyclones tropicaux, validant le transfert d'énergie océan-atmosphère.
+### 3. Thermal Impact of Typhoons
+Detection of "Cold Wakes" south of Japan. The algorithm computes the daily SST gradient to isolate rapid temperature drops (> 0.4°C/day) corresponding to the passage of tropical cyclones, validating ocean-atmosphere energy transfer.
 
-### 4. Modélisation et Tendances
-* **Décomposition saisonnière :** Modélisation de la SST en Méditerranée par régression linéaire incluant une tendance climatique et un cycle saisonnier harmonique.
-* **Projection du niveau de la mer :** Extrapolation linéaire de la tendance globale du niveau moyen des mers (GMSL) jusqu'à l'horizon 2100 (exercice théorique basé sur les données 2011-2015).
+### 4. Modeling and Trends
+* **Seasonal Decomposition:** Modeling Mediterranean SST using linear regression including a climate trend and a harmonic seasonal cycle.
+* **Sea Level Rise Projection:** Linear extrapolation of the Global Mean Sea Level (GMSL) trend up to the year 2100 (theoretical exercise based on 2011-2015 data).
 
-## Installation et Utilisation
+## Installation and Usage
 
-Pour reproduire l'analyse, un compte Google Cloud Platform avec accès à BigQuery est nécessaire.
+To reproduce the analysis, a Google Cloud Platform account with access to BigQuery is required.
 
-1.  **Cloner le dépôt :**
+1.  **Clone the repository:**
     ```bash
-    git clone [https://github.com/votre-username/ocean-satellite-analysis-gcp.git](https://github.com/votre-username/ocean-satellite-analysis-gcp.git)
+    git clone [https://github.com/your-username/ocean-satellite-analysis-gcp.git](https://github.com/your-username/ocean-satellite-analysis-gcp.git)
     cd ocean-satellite-analysis-gcp
     ```
 
-2.  **Installer les dépendances :**
+2.  **Install dependencies:**
     ```bash
     pip install pandas matplotlib scikit-learn google-cloud-bigquery
-    # Note : L'installation de Basemap peut nécessiter des étapes spécifiques selon l'OS.
+    # Note: Installing Basemap might require specific steps depending on the OS.
     ```
 
-3.  **Lancer le Notebook :**
-    Le fichier principal est `miniprojet_MCE_SMA_2025.ipynb`.
-    *Note : Les requêtes SQL nécessitent un fichier de clé d'authentification ou un environnement authentifié (ex: Colab).*
+3.  **Run the Notebook:**
+    The main file is `miniprojet_MCE_SMA_2025.ipynb`.
+    *Note: SQL queries require an authentication key file or an authenticated environment (e.g., Colab).*
 
-## Auteurs
+## Contributors
 
-Projet réalisé dans le cadre du Master Données & Océanographie (2025).
+Project realized as part of the Master's curriculum in Data Science & Oceanography (2025).
 
 * Paul Trassaert
 * Nathan Ygé
